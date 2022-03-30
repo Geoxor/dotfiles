@@ -14,7 +14,7 @@ function install_scoop_apps {
 
 # make a function that takes in the app name and installs it
 function install_winget_app($name) {
-  winget install --silent --accept-package-agreements --accept-source-agreements -e $name
+  winget install --silent --accept-package-agreements --accept-source-agreements --force -e $name
 }
 
 function uninstall_winget_app($name) {
