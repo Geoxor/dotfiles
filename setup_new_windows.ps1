@@ -8,7 +8,11 @@ if ( Get-Command "scoop" -ErrorAction SilentlyContinue -eq $null) {
 
 scoop install winget sudo wget curl winfetch
 
-[System.IO.File]::WriteAllLines($profile, "clear`nwinfetch")
+$str= Get-Content $profile -Tail 1 
+
+if ($str -notmatch "winfetch") {
+  [System.IO.File]::AppendAllText ($profile, "winfetch")
+}
 
 # make a function that takes in the app name and installs it
 function install_app($name) {
