@@ -30,11 +30,10 @@ function add_winfetch_to_profile {
 
 
 # make an array of apps
-$apps = @(
+[string[]] $apps = @(
   "Mojang.MinecraftLauncher",
   "Microsoft.VisualStudio.2019.BuildTools",
   "CPUID.HWMonitor",
-  "CrystalDewWorld.CrystalDiskMark.ShizukuEdition",
   "Discord.Discord.Canary",
   "Figma.Figma",
   "Figma.fonthelper",
@@ -76,9 +75,7 @@ $apps = @(
   "Microsoft.VC++2015-2019Redist-x86"
 )
 
-
-
-$bloat_apps = @(
+[string[]] $bloat_apps = @(
   "Microsoft Update Health Tools",
   "Microsoft Edge Update",
   "Microsoft.Wallet_8wekyb3d8bbwe",
@@ -90,19 +87,20 @@ $bloat_apps = @(
   "Microsoft.GetHelp_8wekyb3d8bbwe",
   "Microsoft.OneDrive",
   "Microsoft.549981C3F5F10_8wekyb3d8bbwe",
-  "Microsoft.Getstarted_8wekyb3d8bbwe",
+  "Microsoft.Getstarted_8wekyb3d8bbwe"
 )
 
 install_scoop
 install_scoop_apps
 
-foreach ($app in $bloat_apps) {
-  uninstall_winget_app($app)
+foreach ($app in $apps) {
+  write-host "* Installing $app" -ForegroundColor Green 
+  install_winget_app($app)
 }
 
-# run the install app function for each app
-foreach ($app in $apps) {
-  install_winget_app($app)
+foreach ($app in $bloat_apps) {
+  write-host "* Uninstalling $app" -ForegroundColor Red 
+  uninstall_winget_app($app)
 }
 
 add_winfetch_to_profile
