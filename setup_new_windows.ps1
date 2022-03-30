@@ -1,23 +1,33 @@
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+function install_scoop {
+  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-if ( Get-Command "scoop" -ErrorAction SilentlyContinue -eq $null) {
-    scoop update
-} else {
-    iwr -useb get.scoop.sh | iex 
+  if ( Get-Command "scoop" -ErrorAction SilentlyContinue -eq $null) {
+      scoop update
+  } else {
+      iwr -useb get.scoop.sh | iex 
+  }
 }
 
-scoop install winget sudo wget curl winfetch
-
-$str = Get-Content $profile -Tail 1 
-
-if ($str -notmatch "winfetch") {
-  [System.IO.File]::AppendAllText($profile, "winfetch")
+function install_scoop_apps {
+  scoop install winget sudo wget curl winfetch
 }
 
 # make a function that takes in the app name and installs it
-function install_app($name) {
+function install_winget_app($name) {
   winget install --silent --accept-package-agreements --accept-source-agreements -e $name
 }
+
+function uninstall_winget_app($name) {
+  winget uninstall --silent $name
+}
+
+function add_winfetch_to_profile {
+  $str = Get-Content $profile -Tail 1 
+  if ($str -notmatch "winfetch") {
+    [System.IO.File]::AppendAllText($profile, "winfetch")
+  }
+}
+
 
 # make an array of apps
 $apps = @(
@@ -66,21 +76,33 @@ $apps = @(
   "Microsoft.VC++2015-2019Redist-x86"
 )
 
-# run the install app function for each app
-foreach ($app in $apps) {
-  install_app($app)
+
+
+$bloat_apps = @(
+  "Microsoft Update Health Tools",
+  "Microsoft Edge Update",
+  "Microsoft.Wallet_8wekyb3d8bbwe",
+  "Microsoft.WindowsPCHealthCheck",
+  "Microsoft.BingWeather_8wekyb3d8bbwe",
+  "Microsoft.EdgeWebView2Runtime",
+  "Microsoft.Edge",
+  "Microsoft.WindowsMaps_8wekyb3d8bbwe",
+  "Microsoft.GetHelp_8wekyb3d8bbwe",
+  "Microsoft.OneDrive",
+  "Microsoft.549981C3F5F10_8wekyb3d8bbwe",
+  "Microsoft.Getstarted_8wekyb3d8bbwe",
+)
+
+install_scoop
+install_scoop_apps
+
+foreach ($app in $bloat_apps) {
+  uninstall_winget_app($app)
 }
 
-winget uninstall --silent Microsoft.WindowsPCHealthCheck
-winget uninstall --silent Microsoft.Wallet_8wekyb3d8bbwe
-winget uninstall --silent "Microsoft Edge Update"
-winget uninstall --silent Microsoft.BingWeather_8wekyb3d8bbwe
-winget uninstall --silent Microsoft.EdgeWebView2Runtime
-winget uninstall --silent Microsoft.Edge
-winget uninstall --silent Microsoft.WindowsMaps_8wekyb3d8bbwe
-winget uninstall --silent Microsoft.OneDrive
-winget uninstall --silent Microsoft.GetHelp_8wekyb3d8bbwe
-winget uninstall --silent --name "Microsoft Update Health Tools"
-winget uninstall --silent --name "Microsoft Edge Update"
-winget uninstall --silent Microsoft.549981C3F5F10_8wekyb3d8bbwe
-winget uninstall --silent Microsoft.Getstarted_8wekyb3d8bbwe
+# run the install app function for each app
+foreach ($app in $apps) {
+  install_winget_app($app)
+}
+
+add_winfetch_to_profile
