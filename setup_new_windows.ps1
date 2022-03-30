@@ -10,50 +10,54 @@ scoop install winget sudo wget curl winfetch
 
 [System.IO.File]::WriteAllLines($profile, "clear`nwinfetch")
 
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Mojang.MinecraftLauncher"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VisualStudio.2019.BuildTools"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "CPUID.HWMonitor"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "CrystalDewWorld.CrystalDiskMark.ShizukuEdition"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Discord.Discord.Canary"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Figma.Figma"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Figma.fonthelper"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "TimKosse.FileZilla.Client"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "GitHub.GitHubDesktop"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Git.Git"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.EdgeWebView2Runtime"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.WindowsTerminal"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Insecure.Nmap"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "OBSProject.OBSStudio"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Parsec.Parsec"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Valve.Steam"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "TeamSpeakSystems.TeamSpeakClient"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Ubisoft.Connect"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "7zip.7zip"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "RARLab.WinRAR"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VisualStudio.2019.Community"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "PeterPawlowski.foobar2000"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Insomnia.Insomnia"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "qBittorrent.qBittorrent"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Python.Python.2"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "VideoLAN.VLC"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VC++2010Redist-x64"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Python.Python.3"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Oracle.JavaRuntimeEnvironment"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Google.Chrome"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VC++2015-2022Redist-x64"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "OpenJS.NodeJS"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Python.Python.3"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Peppy.Osu!"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.WindowsSDK"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "MongoDB.Compass.Full"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VC++2008Redist-x64"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VC++2005Redist-x86"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VisualStudioCode"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VC++2008Redist-x86"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.XNARedist"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VC++2010Redist-x86"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VC++2005Redist-x64"
-winget install --silent --accept-package-agreements --accept-source-agreements -e "Microsoft.VC++2015-2019Redist-x86"
+function install_app(name) {
+winget install --silent --accept-package-agreements --accept-source-agreements -e $name  
+}
+
+install_app("Mojang.MinecraftLauncher")
+install_app("Microsoft.VisualStudio.2019.BuildTools")
+install_app("CPUID.HWMonitor")
+install_app("CrystalDewWorld.CrystalDiskMark.ShizukuEdition")
+install_app("Discord.Discord.Canary")
+install_app("Figma.Figma")
+install_app("Figma.fonthelper")
+install_app("TimKosse.FileZilla.Client")
+install_app("GitHub.GitHubDesktop")
+install_app("Git.Git")
+install_app("Microsoft.EdgeWebView2Runtime")
+install_app("Microsoft.WindowsTerminal")
+install_app("Insecure.Nmap")
+install_app("OBSProject.OBSStudio")
+install_app("Parsec.Parsec")
+install_app("Valve.Steam")
+install_app("TeamSpeakSystems.TeamSpeakClient")
+install_app("Ubisoft.Connect")
+install_app("7zip.7zip")
+install_app("RARLab.WinRAR")
+install_app("Microsoft.VisualStudio.2019.Community")
+install_app("PeterPawlowski.foobar2000")
+install_app("Insomnia.Insomnia")
+install_app("qBittorrent.qBittorrent")
+install_app("Python.Python.2")
+install_app("VideoLAN.VLC")
+install_app("Microsoft.VC++2010Redist-x64")
+install_app("Python.Python.3")
+install_app("Oracle.JavaRuntimeEnvironment")
+install_app("Google.Chrome")
+install_app("Microsoft.VC++2015-2022Redist-x64")
+install_app("OpenJS.NodeJS")
+install_app("Python.Python.3")
+install_app("Peppy.Osu!")
+install_app("Microsoft.WindowsSDK")
+install_app("MongoDB.Compass.Full")
+install_app("Microsoft.VC++2008Redist-x64")
+install_app("Microsoft.VC++2005Redist-x86")
+install_app("Microsoft.VisualStudioCode")
+install_app("Microsoft.VC++2008Redist-x86")
+install_app("Microsoft.XNARedist")
+install_app("Microsoft.VC++2010Redist-x86")
+install_app("Microsoft.VC++2005Redist-x64")
+install_app("Microsoft.VC++2015-2019Redist-x86")
 winget uninstall --silent Microsoft.WindowsPCHealthCheck
 winget uninstall --silent Microsoft.Wallet_8wekyb3d8bbwe
 winget uninstall --silent "Microsoft Edge Update"
