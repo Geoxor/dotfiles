@@ -9,7 +9,7 @@ function install_scoop {
 }
 
 function install_scoop_apps {
-  scoop install winget sudo wget curl winfetch
+  scoop install winget sudo wget curl winfetch ffmpeg
 }
 
 # make a function that takes in the app name and installs it
