@@ -10,8 +10,9 @@ scoop install winget sudo wget curl winfetch
 
 [System.IO.File]::WriteAllLines($profile, "clear`nwinfetch")
 
-function install_app {
-  winget install --silent --accept-package-agreements --accept-source-agreements -e $1
+# make a function that takes in the app name and installs it
+function install_app($name) {
+  winget install --silent --accept-package-agreements --accept-source-agreements -e $name
 }
 
 # make an array of apps
