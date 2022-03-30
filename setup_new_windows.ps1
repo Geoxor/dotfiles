@@ -14,49 +14,58 @@ function install_app(name) {
   winget install --silent --accept-package-agreements --accept-source-agreements -e $name  
 }
 
-install_app("Mojang.MinecraftLauncher")
-install_app("Microsoft.VisualStudio.2019.BuildTools")
-install_app("CPUID.HWMonitor")
-install_app("CrystalDewWorld.CrystalDiskMark.ShizukuEdition")
-install_app("Discord.Discord.Canary")
-install_app("Figma.Figma")
-install_app("Figma.fonthelper")
-install_app("TimKosse.FileZilla.Client")
-install_app("GitHub.GitHubDesktop")
-install_app("Git.Git")
-install_app("Microsoft.WindowsTerminal")
-install_app("Insecure.Nmap")
-install_app("OBSProject.OBSStudio")
-install_app("Parsec.Parsec")
-install_app("Valve.Steam")
-install_app("TeamSpeakSystems.TeamSpeakClient")
-install_app("Ubisoft.Connect")
-install_app("7zip.7zip")
-install_app("RARLab.WinRAR")
-install_app("Microsoft.VisualStudio.2019.Community")
-install_app("PeterPawlowski.foobar2000")
-install_app("Insomnia.Insomnia")
-install_app("qBittorrent.qBittorrent")
-install_app("Python.Python.2")
-install_app("VideoLAN.VLC")
-install_app("Microsoft.VC++2010Redist-x64")
-install_app("Python.Python.3")
-install_app("Oracle.JavaRuntimeEnvironment")
-install_app("Google.Chrome")
-install_app("Microsoft.VC++2015-2022Redist-x64")
-install_app("OpenJS.NodeJS")
-install_app("Python.Python.3")
-install_app("Peppy.Osu!")
-install_app("Microsoft.WindowsSDK")
-install_app("MongoDB.Compass.Full")
-install_app("Microsoft.VC++2008Redist-x64")
-install_app("Microsoft.VC++2005Redist-x86")
-install_app("Microsoft.VisualStudioCode")
-install_app("Microsoft.VC++2008Redist-x86")
-install_app("Microsoft.XNARedist")
-install_app("Microsoft.VC++2010Redist-x86")
-install_app("Microsoft.VC++2005Redist-x64")
-install_app("Microsoft.VC++2015-2019Redist-x86")
+# make an array of apps
+$apps = @(
+  "Mojang.MinecraftLauncher",
+  "Microsoft.VisualStudio.2019.BuildTools",
+  "CPUID.HWMonitor",
+  "CrystalDewWorld.CrystalDiskMark.ShizukuEdition",
+  "Discord.Discord.Canary",
+  "Figma.Figma",
+  "Figma.fonthelper",
+  "TimKosse.FileZilla.Client",
+  "GitHub.GitHubDesktop",
+  "Git.Git",
+  "Microsoft.WindowsTerminal",
+  "Insecure.Nmap",
+  "OBSProject.OBSStudio",
+  "Parsec.Parsec",
+  "Valve.Steam",
+  "TeamSpeakSystems.TeamSpeakClient",
+  "Ubisoft.Connect",
+  "7zip.7zip",
+  "RARLab.WinRAR",
+  "Microsoft.VisualStudio.2019.Community",
+  "PeterPawlowski.foobar2000",
+  "Insomnia.Insomnia",
+  "qBittorrent.qBittorrent",
+  "Python.Python.2",
+  "VideoLAN.VLC",
+  "Microsoft.VC++2010Redist-x64",
+  "Python.Python.3",
+  "Oracle.JavaRuntimeEnvironment",
+  "Google.Chrome",
+  "Microsoft.VC++2015-2022Redist-x64",
+  "OpenJS.NodeJS",
+  "Python.Python.3",
+  "Peppy.Osu!",
+  "Microsoft.WindowsSDK",
+  "MongoDB.Compass.Full",
+  "Microsoft.VC++2008Redist-x64",
+  "Microsoft.VC++2005Redist-x86",
+  "Microsoft.VisualStudioCode",
+  "Microsoft.VC++2008Redist-x86",
+  "Microsoft.XNARedist",
+  "Microsoft.VC++2010Redist-x86",
+  "Microsoft.VC++2005Redist-x64",
+  "Microsoft.VC++2015-2019Redist-x86"
+)
+
+# run the install app function for each app
+foreach ($app in $apps) {
+  install_app($app)
+}
+
 winget uninstall --silent Microsoft.WindowsPCHealthCheck
 winget uninstall --silent Microsoft.Wallet_8wekyb3d8bbwe
 winget uninstall --silent "Microsoft Edge Update"
