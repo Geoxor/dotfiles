@@ -11,7 +11,7 @@ scoop install winget sudo wget curl winfetch
 [System.IO.File]::WriteAllLines($profile, "clear`nwinfetch")
 
 function install_app(name) {
-winget install --silent --accept-package-agreements --accept-source-agreements -e $name  
+  winget install --silent --accept-package-agreements --accept-source-agreements -e $name  
 }
 
 install_app("Mojang.MinecraftLauncher")
