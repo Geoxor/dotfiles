@@ -63,8 +63,6 @@ function add_winfetch_to_profile {
   "OpenJS.NodeJS",
   "Python.Python.3",
   "Peppy.Osu!",
-  "Microsoft.WindowsSDK",
-  "MongoDB.Compass.Full",
   "Microsoft.VC++2008Redist-x64",
   "Microsoft.VC++2005Redist-x86",
   "Microsoft.VisualStudioCode",
